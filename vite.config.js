@@ -1,16 +1,14 @@
 import { defineConfig } from 'vite';
 import astro from '@astrojs/vite-plugin-astro';
 
-export default defineConfig(({ command, mode }) => {
-  return {
-    plugins: [astro()],
-    server: {
-      host: true,
-      port: 3000, // or whatever your dev server uses
-      strictPort: true,
-      allowedHosts: [
-        'devserver-main--lilpunch2.netlify.app', // Netlify Visual Editor host
-      ],
-    },
-  };
+export default defineConfig({
+  plugins: [astro()],
+  server: {
+    host: '0.0.0.0',   // ← exposes server to all network interfaces
+    port: 4321,         // same port as Astro dev server
+    strictPort: true,
+    allowedHosts: [
+      'devserver-main--lilpunch2.netlify.app', // Visual Editor host
+    ],
+  },
 });
